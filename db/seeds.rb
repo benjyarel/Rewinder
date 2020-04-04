@@ -15,8 +15,8 @@ puts "Creating movies"
 Movie.create!( title:'La Haine' , year:'1995', director:'Mathieu Kassovitz',poster_path:'https://image.tmdb.org/t/p/w1280/3nVoVV0RmweOgDjebtI8CFv13rf.jpg', synopsis:"Trois copains d'une banlieue ordinaire traînent leur ennui et leur jeunesse qui se perd. Ils vont vivre la journée la plus importante de leur vie après une nuit d'émeutes provoquée par le passage à tabac d'Abdel Ichah par un inspecteur de police lors d'un interrogatoire." )
 
 puts "Creating bookmarks"
-Bookmark.create!(user: User.first , movie: Movie.first)
-Bookmark.create!(user: User.last , movie: Movie.first)
+Bookmark.create!(user: User.first , moviehub : Movie.first)
+Bookmark.create!(user: User.last , moviehub : Movie.first)
 
 puts "Creating movie reviews"
 MovieReview.create!(
