@@ -10,10 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_04_152116) do
+ActiveRecord::Schema.define(version: 2020_04_04_153945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "movie_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["movie_id"], name: "index_bookmarks_on_movie_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
+  create_table "movie_reviews", force: :cascade do |t|
+    t.bigint "movie_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "rating"
+    t.string "foreign_link"
+    t.text "short_review"
+    t.text "directing_review"
+    t.text "acting_review"
+    t.text "sound_review"
+    t.text "story_review"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["movie_id"], name: "index_movie_reviews_on_movie_id"
+    t.index ["user_id"], name: "index_movie_reviews_on_user_id"
+  end
+
+  create_table "movies", force: :cascade do |t|
+    t.string "title"
+    t.integer "year"
+    t.string "director"
+    t.text "synopsis"
+    t.string "poster_path"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +58,14 @@ ActiveRecord::Schema.define(version: 2020_04_04_152116) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookmarks", "movies"
+  add_foreign_key "bookmarks", "users"
+  add_foreign_key "movie_reviews", "movies"
+  add_foreign_key "movie_reviews", "users"
 end
