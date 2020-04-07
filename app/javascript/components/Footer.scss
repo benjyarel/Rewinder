@@ -1,0 +1,22 @@
+.footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    background: #140100;
+    height: 64px;
+    padding: 4px;
+}
+
+.footer-buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 8px;
+}
+
+.footer-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color : #FFFBFB;
+}
