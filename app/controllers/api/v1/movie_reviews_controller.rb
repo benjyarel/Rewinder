@@ -1,12 +1,12 @@
 class Api::V1::MovieReviewsController < Api::V1::BaseController
   before_action :set_movie_review, only: [:show, :update]
   def index
-    movie_reviews = MovieReview.all
-    render json: movie_reviews
+    @movie_reviews = MovieReview.all
+    render json: @movie_reviews
   end
 
   def show
-    render json: movie_review
+    render json: @movie_review
   end
 
   def create
