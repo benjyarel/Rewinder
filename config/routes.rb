@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :movie_reviews, only: [:index, :show, :update, :create]
+      resources :movies, only:[:show, :create]
+      resources :bookmarks, only:[:index, :show, :create, :update, :destroy]
     end
   end
 
