@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :movie_reviews, only: [:index, :show]
+      resources :movie_reviews, only: [:index, :show, :update, :create]
     end
   end
 
