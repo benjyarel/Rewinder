@@ -1,1 +1,19 @@
-// Specific CSS for your home-page
+#homepage {
+  height: 100vh;
+  margin: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.header {
+  margin: 0 0 36px 0;
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

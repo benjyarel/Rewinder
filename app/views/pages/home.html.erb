@@ -1,10 +1,18 @@
   <% if current_user %>
     <%= react_component("App") %>
   <% else %>
-    <div class="container">
-      <div class="title">REWINDER</div>
-      <div class="sub-title"> Connecte-toi pour commencer ajouter tes films:</div>
-      <%= link_to "Connecte-toi", new_user_session_path, class: 'btn btn-primary'  %>
-      <%= link_to "Inscris-toi", new_user_registration_path, class: 'btn btn-primary'  %>
+    <div id="homepage">
+      <div class="header">
+        <div class="title">
+          REWINDER
+        </div>
+        <div class="sub-title">
+          Connecte-toi pour commencer ajouter tes films:
+        </div>
+      </div>
+      <div class="actions">
+        <%= link_to "Connecte-toi", new_user_session_path, class: 'btn btn-primary'  %>
+        <%= link_to "Inscris-toi", new_user_registration_path, class: 'btn btn-primary'  %>
+      </div>
     </div>
   <% end %>
