@@ -7,6 +7,7 @@ class DashboardScreen extends React.Component {
     return (
       <div>
         <HorizontalMovieList />
+        <HorizontalMovieList />
       </div>
     );
   }
