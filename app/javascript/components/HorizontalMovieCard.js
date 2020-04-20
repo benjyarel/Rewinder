@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from "react-redux";
+
 import './HorizontalMovieCard.scss'
 
 class HorizontalMovieCard extends React.Component  {
@@ -24,4 +26,8 @@ class HorizontalMovieCard extends React.Component  {
   }
 }
 
-export default HorizontalMovieCard;
+const mapStateToprops = (state) => {
+  return { toto: state.toto}
+}
+
+export default connect(mapStateToprops)(HorizontalMovieCard);
