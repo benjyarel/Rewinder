@@ -1,6 +1,7 @@
 import React from 'react';
 import './Footer.scss'
 
+
 class Footer extends React.Component {
   render() {
     return (
@@ -19,7 +20,7 @@ class Footer extends React.Component {
             <span>Favoris</span>
           </li>
         </ul>
-    </div>
+      </div>
     )
   }
 }
