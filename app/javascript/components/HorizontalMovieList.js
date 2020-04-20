@@ -1,14 +1,25 @@
 import React from "react";
-import './HorizontalMovieList.scss'
+import { connect } from 'react-redux';
+
 import HorizontalMovieCard from './HorizontalMovieCard';
+import { fetchBookmarks, fetchMovieReviews } from '../actions';
+import './HorizontalMovieList.scss'
 
 class HorizontalMovieList extends React.Component {
-
+  componentDidMount() {
+    this.props.display === "bookmarks" ? this.props.fetchBookmarks() : this.props.fetchMovieReviews()
+  }
 
   renderList() {
-    return this.props.movies.map((movie) => {
-      return < HorizontalMovieCard movie={movie} key={movie.id} />
-    });
+    if (this.props.display === "bookmarks") {
+      return this.props.bookmarks.map((bookmark) => {
+        return < HorizontalMovieCard movieId={bookmark.movie_id} key={bookmark.id} />
+      });
+    } else {
+      return this.props.movieReviews.map((movieReview) => {
+        return < HorizontalMovieCard movieId={movieReview.movie_id} key={movieReview.id} />
+      });
+    }
   }
 
   render() {
@@ -25,4 +36,10 @@ class HorizontalMovieList extends React.Component {
   }
 }
 
-export default HorizontalMovieList;
+const mapStateToProps = (state) => {
+  return {
+    bookmarks: state.bookmarks,
+    movieReviews: state.movieReviews
+  }
+}
+export default connect(mapStateToProps, { fetchBookmarks, fetchMovieReviews })(HorizontalMovieList);
