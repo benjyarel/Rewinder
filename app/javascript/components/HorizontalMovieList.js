@@ -6,11 +6,9 @@ import { fetchBookmarks, fetchMovieReviews } from '../actions';
 import './HorizontalMovieList.scss'
 
 class HorizontalMovieList extends React.Component {
-
   componentDidMount() {
     this.props.display === "bookmarks" ? this.props.fetchBookmarks() : this.props.fetchMovieReviews()
   }
-
 
   renderList() {
     if (this.props.display === "bookmarks") {
