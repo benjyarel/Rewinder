@@ -7,13 +7,11 @@ class HorizontalMovieList extends React.Component {
 
   renderList() {
     return this.props.movies.map((movie) => {
-      console.log(movie)
       return < HorizontalMovieCard movie={movie} key={movie.id} />
     });
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className="horizontal-movie-list">
         <div className="header">
