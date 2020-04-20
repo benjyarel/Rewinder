@@ -1,5 +1,5 @@
 import React from "react";
-import './HorizontalMovieList.scss'
+// import './HorizontalMovieList.scss'
 import HorizontalMovieCard from './HorizontalMovieCard';
 
 class HorizontalMovieList extends React.Component {

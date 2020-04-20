@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 
-import './HorizontalMovieCard.scss'
+ // import './HorizontalMovieCard.scss'
 
 class HorizontalMovieCard extends React.Component  {
   truncateTitle(title) {
