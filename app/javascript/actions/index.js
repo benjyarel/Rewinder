@@ -25,8 +25,15 @@ export const fetchMovie = (id) => {
 export const fetchBookmarksAndMovies = () => {
   return async (dispatch, getState) => {
   await dispatch(fetchBookmarks());
-  const moviesIds = _.uniq(_.map(getState().bookmarks,'movie_id'));
-  console.log(moviesIds);
+  const moviesIds = _.uniq( _.map( getState().bookmarks, 'movie_id') );
   moviesIds.forEach(id => dispatch(fetchMovie(id)))
+  }
+}
+
+export const fetchMovieReviewsAndMovies = () => {
+  return async (dispatch, getState) => {
+    await dispatch(fetchMovieReviews());
+    const moviesIds = _.uniq(_.map(getState().movieReviews, 'movie_id'));
+    moviesIds.forEach(id => dispatch(fetchMovie(id)));
   }
 }
