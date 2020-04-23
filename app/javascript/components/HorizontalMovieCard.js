@@ -11,20 +11,26 @@ class HorizontalMovieCard extends React.Component  {
   }
 
   render(){
-    const {movie} = this.props;
+    const {movie, rating} = this.props;
     if (!movie) {
       return null;
-    };
+    }
+
     return (
-      <div className='movie-card'>
-        <img src={movie.poster_path} alt='poster' />
-        <div className="content">
-          <div className="content-top">
-            {this.truncateTitle(movie.title)}
+      <div>
+        <div className='movie-card'>
+          <img src={movie.poster_path} alt='poster' />
+          <div className="content">
+            <div className="content-top">
+              {this.truncateTitle(movie.title)}
+            </div>
+            <div className="content-bottom">
+              {movie.year}
+            </div>
           </div>
-          <div className="content-bottom">
-            {movie.year}
-          </div>
+        </div>
+        <div className='rating'>
+          <span>{rating}</span>
         </div>
       </div>
     );
