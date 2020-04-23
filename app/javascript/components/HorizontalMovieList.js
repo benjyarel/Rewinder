@@ -2,12 +2,13 @@ import React from "react";
 import { connect } from 'react-redux';
 
 import HorizontalMovieCard from './HorizontalMovieCard';
-import { fetchBookmarks, fetchMovieReviews } from '../actions';
+import { fetchBookmarks, fetchMovieReviews, fetchBookmarksAndMovies } from '../actions';
 import './HorizontalMovieList.scss'
 
 class HorizontalMovieList extends React.Component {
   componentDidMount() {
-    this.props.display === "bookmarks" ? this.props.fetchBookmarks() : this.props.fetchMovieReviews()
+    //this.props.display === "bookmarks" ? this.props.fetchBookmarksandMovies() : this.props.fetchMovieReviewsandMovies()
+    this.props.fetchBookmarksAndMovies();
   }
 
   renderList() {
@@ -37,9 +38,11 @@ class HorizontalMovieList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  // console.log(state)
   return {
     bookmarks: state.bookmarks,
-    movieReviews: state.movieReviews
+    movieReviews: state.movieReviews,
+    movies: state.movies
   }
 }
-export default connect(mapStateToProps, { fetchBookmarks, fetchMovieReviews })(HorizontalMovieList);
+export default connect(mapStateToProps, { fetchBookmarks, fetchMovieReviews, fetchBookmarksAndMovies })(HorizontalMovieList);

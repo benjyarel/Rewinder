@@ -5,6 +5,6 @@ import movieReviewsReducer from './movieReviewsReducer';
 
 export default combineReducers({
   bookmarks: bookmarksReducer,
-  movie: moviesReducer,
+  movies: moviesReducer,
   movieReviews: movieReviewsReducer
 });

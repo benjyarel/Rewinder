@@ -14,7 +14,6 @@ class HorizontalMovieCard extends React.Component  {
 
   componentDidMount() {
     const { movieId } = this.props;
-    this.props.fetchMovie(movieId);
   }
 
   render(){
@@ -38,8 +37,8 @@ class HorizontalMovieCard extends React.Component  {
   }
 }
 
-const mapStateToprops = (state) => {
-  return { movie: state.movie}
+const mapStateToprops = (state, ownProps) => {
+  return { movie: state.movies.find(movie => movie.id === ownProps.movieId)}
 }
 
 export default connect(mapStateToprops,{fetchMovie})(HorizontalMovieCard);
