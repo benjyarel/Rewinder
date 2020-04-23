@@ -2,7 +2,7 @@ class Api::V1::BookmarksController < Api::V1::BaseController
   before_action :set_bookmark, only: [:show, :update, :destroy]
 
   def index
-    @bookmarks = Bookmark.all
+    @bookmarks = current_user.bookmarks
     render json: @bookmarks
   end
 

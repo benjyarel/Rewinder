@@ -3,7 +3,6 @@ import server from '../apis/server';
 export const fetchBookmarks =  () => {
   return async (dispatch) => {
     const response = await server.get("/api/v1/bookmarks");
-    console.log(response)
     dispatch({type: 'FETCH_BOOKMARKS', payload: response.data});
   }
 }
