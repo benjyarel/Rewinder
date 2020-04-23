@@ -1,9 +1,9 @@
 import server from '../apis/server';
+import _ from 'lodash';
 
 export const fetchBookmarks =  () => {
   return async (dispatch) => {
     const response = await server.get("/api/v1/bookmarks");
-    console.log(response)
     dispatch({type: 'FETCH_BOOKMARKS', payload: response.data});
   }
 }
@@ -22,3 +22,18 @@ export const fetchMovie = (id) => {
   }
 }
 
+export const fetchBookmarksAndMovies = () => {
+  return async (dispatch, getState) => {
+  await dispatch(fetchBookmarks());
+  const moviesIds = _.uniq( _.map( getState().bookmarks, 'movie_id') );
+  moviesIds.forEach(id => dispatch(fetchMovie(id)))
+  }
+}
+
+export const fetchMovieReviewsAndMovies = () => {
+  return async (dispatch, getState) => {
+    await dispatch(fetchMovieReviews());
+    const moviesIds = _.uniq(_.map(getState().movieReviews, 'movie_id'));
+    moviesIds.forEach(id => dispatch(fetchMovie(id)));
+  }
+}

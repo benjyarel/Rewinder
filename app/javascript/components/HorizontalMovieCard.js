@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from "react-redux";
-
-import { fetchMovie } from '../actions';
 import './HorizontalMovieCard.scss'
 
 class HorizontalMovieCard extends React.Component  {
@@ -10,11 +8,6 @@ class HorizontalMovieCard extends React.Component  {
       return null;
     };
     return title.length > 20 ? `${title.substring(17, 0)}...` : title
-  }
-
-  componentDidMount() {
-    const { movieId } = this.props;
-    this.props.fetchMovie(movieId);
   }
 
   render(){
@@ -38,8 +31,8 @@ class HorizontalMovieCard extends React.Component  {
   }
 }
 
-const mapStateToprops = (state) => {
-  return { movie: state.movie}
+const mapStateToprops = (state, ownProps) => {
+  return { movie: state.movies.find(movie => movie.id === ownProps.movieId)}
 }
 
-export default connect(mapStateToprops,{fetchMovie})(HorizontalMovieCard);
+export default connect(mapStateToprops)(HorizontalMovieCard);
