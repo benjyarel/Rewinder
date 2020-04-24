@@ -10,14 +10,19 @@ class HorizontalMovieCard extends React.Component  {
     return title.length > 20 ? `${title.substring(17, 0)}...` : title
   }
 
+  renderBottomContent(movie,rate ) {
+    if (!rate) {
+      return <span>{movie.year}</span>;
+    };
+      return  <span className='rating'>{rate} / 10</span>;
+    }
+
   render(){
     const {movie, rating} = this.props;
     if (!movie) {
       return null;
-    }
-
+    };
     return (
-      <div>
         <div className='movie-card'>
           <img src={movie.poster_path} alt='poster' />
           <div className="content">
@@ -25,15 +30,12 @@ class HorizontalMovieCard extends React.Component  {
               {this.truncateTitle(movie.title)}
             </div>
             <div className="content-bottom">
-              {movie.year}
+              {this.renderBottomContent(movie,rating)}
             </div>
           </div>
         </div>
-        <div className='rating'>
-          <span>{rating}</span>
-        </div>
-      </div>
     );
+
   }
 }
 
