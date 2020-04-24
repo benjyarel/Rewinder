@@ -3,6 +3,7 @@ import './Footer.scss';
 import { Link } from 'react-router-dom';
 
 
+
 class Footer extends React.Component {
   render() {
     return (
@@ -14,14 +15,18 @@ class Footer extends React.Component {
               <span>Home</span>
             </li>
           </Link>
-          <li className="footer-button">
-            <i className="fas fa-search"></i>
-            <span>Recherche</span>
-          </li>
-          <li className="footer-button">
-            <i className="fas fa-edit"></i>
-            <span>Noter</span>
-          </li>
+          <Link to="/search">
+            <li className="footer-button">
+              <i className="fas fa-search"></i>
+              <span>Recherche</span>
+            </li>
+          </Link>
+          <Link to='/movie_reviews'>
+            <li className="footer-button">
+              <i className="fas fa-edit"></i>
+              <span>Noter</span>
+            </li>
+          </Link>
           <Link to="/bookmarks">
             <li className="footer-button">
               <i className="fas fa-bookmark"></i>
@@ -33,5 +38,7 @@ class Footer extends React.Component {
     )
   }
 }
+
+
 
 export default Footer;
