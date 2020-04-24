@@ -17,7 +17,7 @@ class HorizontalMovieList extends React.Component {
       });
     } else {
       return this.props.movieReviews.map((movieReview) => {
-        return < HorizontalMovieCard movieId={movieReview.movie_id} key={movieReview.id} />
+        return < HorizontalMovieCard movieId={movieReview.movie_id} rating={movieReview.rating} key={movieReview.id} />
       });
     }
   }
