@@ -8,7 +8,7 @@ import reducers from "../reducers"
 import Footer from './Footer';
 import DashboardScreen from './screens/DashboardScreen';
 import BookmarksScreen from './screens/BookmarksScreen';
-import SearchModal from './SearchModal';
+import SearchModal from './screens/SearchModal';
 import MovieReviewsScreen from './screens/MovieReviewsScreen';
 
 import "./App.scss";
