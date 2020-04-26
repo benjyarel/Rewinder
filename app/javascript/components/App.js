@@ -12,6 +12,7 @@ import SearchModal from './screens/SearchModal';
 import MovieReviewsScreen from './screens/MovieReviewsScreen';
 
 import "./App.scss";
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 class App extends React.Component {
   render() {

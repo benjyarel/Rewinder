@@ -1,4 +1,4 @@
-import server from '../apis/server';
+import{ server, tmdb } from '../apis/axios';
 import _ from 'lodash';
 
 export const fetchBookmarks =  () => {
@@ -36,4 +36,16 @@ export const fetchMovieReviewsAndMovies = () => {
     const moviesIds = _.uniq(_.map(getState().movieReviews, 'movie_id'));
     moviesIds.forEach(id => dispatch(fetchMovie(id)));
   }
+}
+
+export const searchMovies = (query) => {
+  console.log(`jesuis dans l'action, la query: ${query}`);
+  return async (dispatch) => {
+    const response = await server.post('/api/v1/search_movies',
+    {query: `${query}`}
+    )
+    console.log("oups")
+
+    dispatch({type: "SEARCH_MOVIES", payload: response.data.results})
+  };
 }
