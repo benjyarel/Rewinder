@@ -1,0 +1,31 @@
+.search-container {
+  display: flex;
+  justify-content: center;
+  transition-duration: 500ms;
+}
+
+.search-movie-box {
+  background: #140100;
+  border: solid 1px #FFFBFB;
+  border-radius: 6px;
+  position: absolute;
+  bottom: calc(50% + 64px);
+  text-align: center;
+}
+
+.search-movie-form {
+  .form-group {
+    margin: 24px;
+  }
+
+  button {
+    margin-top: 16px;
+  }
+}
+
+.results {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  row-gap: 16px;
+}
