@@ -17,9 +17,10 @@ class Api::V1::MoviesController < Api::V1::BaseController
     url ="https://api.themoviedb.org/3/search/movie?api_key=#{ENV['TMDB_API']}&language=fr-FR&query=#{query}"
     response = JSON.parse(open(url).read)["results"]
     movies = response.map do |movie|
+      year =  movie["release_date"].empty? ? 0 : Date.parse(movie["release_date"]).year
       movie =  Movie.new(
           title: movie["original_title"],
-          year:  Date.parse(movie["release_date"]).year,
+          year:  year,
           synopsis: movie["overview"] ,
           poster_path: movie["poster_path"],
           tmdb_id: movie["id"]
