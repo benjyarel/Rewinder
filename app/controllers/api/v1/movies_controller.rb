@@ -15,15 +15,17 @@ class Api::V1::MoviesController < Api::V1::BaseController
   def search_movies
     query = params[:query]
     url ="https://api.themoviedb.org/3/search/movie?api_key=#{ENV['TMDB_API']}&language=fr-FR&query=#{query}"
-    response = open(url).read
-    good_response = JSON.parse(response)
-    movies_array = good_response["results"]
-    p movies_array.class
-     movies_array.each do |movie|
-      puts movie['title']
+    response = JSON.parse(open(url).read)["results"]
+    movies = response.map do |movie|
+      movie =  Movie.new(
+          title: movie["original_title"],
+          year:  Date.parse(movie["release_date"]).year,
+          synopsis: movie["overview"] ,
+          poster_path: movie["poster_path"],
+          tmdb_id: movie["id"]
+        )
     end
-    raise
-    render json: response
+    render json: movies
   end
 
   private
