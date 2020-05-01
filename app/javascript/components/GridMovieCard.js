@@ -11,11 +11,11 @@ class GridMovieCard extends React.Component  {
   render() {
     const { movie } = this.props
     const poster_url = `https://image.tmdb.org/t/p/w150_and_h225_bestv2/${movie.poster_path}`
-    // TO DO : Render a placeholder image
+     const placeholder_image = "https://via.placeholder.com/160x225/140100/FFFFFF/?text=No+image"
     // Truncate title by css not react
    return (
      <div className='movie-card'>
-       <img src={poster_url} alt='poster' />
+       <img src={ movie.poster_path ? poster_url : placeholder_image } alt='poster' />
        <div className="content">
          <div className="content-top">
            {this.truncateTitle(movie.title)}

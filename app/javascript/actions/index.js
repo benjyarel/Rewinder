@@ -44,3 +44,7 @@ export const searchMovies = (query) => {
     dispatch({type: "SEARCH_MOVIES", payload: response.data})
   };
 }
+
+export const deleteSearchedMovies = () => {
+  return { type: "DELETE_SEARCHED_MOVIES"}
+}
