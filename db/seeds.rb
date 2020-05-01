@@ -17,7 +17,7 @@ Movie.create!(
   title:'La Haine',
   year:'1995',
   director:'Mathieu Kassovitz',
-  poster_path:'https://image.tmdb.org/t/p/w1280/3nVoVV0RmweOgDjebtI8CFv13rf.jpg',
+  poster_path:'3nVoVV0RmweOgDjebtI8CFv13rf.jpg',
   synopsis: "Trois copains d'une banlieue ordinaire traînent leur ennui et leur jeunesse qui se perd. Ils vont vivre la journée la plus importante de leur vie après une nuit d'émeutes provoquée par le passage à tabac d'Abdel Ichah par un inspecteur de police lors d'un interrogatoire."
 )
 
@@ -25,7 +25,7 @@ Movie.create!(
   title: "Batman: Le film",
   year: 1966,
   director:"Leslie H.Martinson",
-  poster_path: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/ltvRETeZjHNnptonNuHTn5olhl8.jpg",
+  poster_path: "ltvRETeZjHNnptonNuHTn5olhl8.jpg",
   synopsis: lorem_40w
 )
 
@@ -33,7 +33,7 @@ Movie.create!(
   title:"Kill Bill: Vol 1",
   year: 2003 ,
   director:"Quentin Tarantino",
-  poster_path:"https://image.tmdb.org/t/p/w600_and_h900_bestv2/udRaQKzT0LG4iQFxHLaYjno9uAT.jpg",
+  poster_path:"udRaQKzT0LG4iQFxHLaYjno9uAT.jpg",
   synopsis: lorem_40w
 )
 
