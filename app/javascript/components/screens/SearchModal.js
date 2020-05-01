@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { searchMovies } from '../../actions'
 import './SearchModal';
+import GridMovieCard from '../GridMovieCard';
 
 
 class SearchModal extends React.Component {
@@ -15,16 +16,15 @@ class SearchModal extends React.Component {
 
   renderResults() {
     if (this.props.moviesResult[0] === undefined) {
-      return <div>coucou</div>;
+      return null;
     }
     // rend la search transparente, puis la fait disparaitre
     const search = document.querySelector('.search-container')
     search.style.opacity = 0;
     setTimeout(() => { search.style.display = "none"; }, 500);
 
-
     return this.props.moviesResult.map((movie) => {
-        return  <div>{movie.title}</div>;
+      return <GridMovieCard movie={movie} key={movie.tmdb_id}/>;
       })
   }
 

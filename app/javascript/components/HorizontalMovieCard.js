@@ -10,7 +10,7 @@ class HorizontalMovieCard extends React.Component  {
     return title.length > 20 ? `${title.substring(17, 0)}...` : title
   }
 
-  renderBottomContent(movie,rate ) {
+  renderBottomContent(movie,rate) {
     if (!rate) {
       return <span>{movie.year}</span>;
     };
@@ -18,6 +18,7 @@ class HorizontalMovieCard extends React.Component  {
     }
 
   render(){
+    console.log(this.props)
     const {movie, rating} = this.props;
     if (!movie) {
       return null;

@@ -22,3 +22,9 @@
     margin-top: 16px;
   }
 }
+
+.results {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
