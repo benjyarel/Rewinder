@@ -18,7 +18,8 @@ Movie.create!(
   year:'1995',
   director:'Mathieu Kassovitz',
   poster_path:'3nVoVV0RmweOgDjebtI8CFv13rf.jpg',
-  synopsis: "Trois copains d'une banlieue ordinaire traînent leur ennui et leur jeunesse qui se perd. Ils vont vivre la journée la plus importante de leur vie après une nuit d'émeutes provoquée par le passage à tabac d'Abdel Ichah par un inspecteur de police lors d'un interrogatoire."
+  synopsis: "Trois copains d'une banlieue ordinaire traînent leur ennui et leur jeunesse qui se perd. Ils vont vivre la journée la plus importante de leur vie après une nuit d'émeutes provoquée par le passage à tabac d'Abdel Ichah par un inspecteur de police lors d'un interrogatoire.",
+  tmdb_id: 24
 )
 
 Movie.create!(
@@ -26,7 +27,8 @@ Movie.create!(
   year: 1966,
   director:"Leslie H.Martinson",
   poster_path: "ltvRETeZjHNnptonNuHTn5olhl8.jpg",
-  synopsis: lorem_40w
+  synopsis: lorem_40w,
+  tmdb_id: 2661
 )
 
 Movie.create!(
@@ -34,7 +36,8 @@ Movie.create!(
   year: 2003 ,
   director:"Quentin Tarantino",
   poster_path:"udRaQKzT0LG4iQFxHLaYjno9uAT.jpg",
-  synopsis: lorem_40w
+  synopsis: lorem_40w,
+  tmdb_id: 406
 )
 
 puts "Creating bookmarks, movie reviews for benjamin"
