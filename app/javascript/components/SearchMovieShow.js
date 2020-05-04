@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { postMovie} from '../actions';
+import { postBookmark } from '../actions';
 
 class SearchMovieShow extends React.Component {
   componentDidMount() {
@@ -11,7 +11,9 @@ class SearchMovieShow extends React.Component {
 
   handleClick = () => {
     const { movie } = this.props.location.state;
-    this.props.postMovie(movie);
+    console.log(movie)
+    this.props.postBookmark(movie);
+
   }
 
   renderImgSrc(movie) {
@@ -45,4 +47,4 @@ class SearchMovieShow extends React.Component {
   }
 }
 
-export default connect(null, { postMovie})(SearchMovieShow);
+export default connect(null, { postBookmark })(SearchMovieShow);

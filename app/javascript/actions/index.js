@@ -54,4 +54,13 @@ export const postMovie = (movie) => {
   return {type: 'POST_MOVIE_DB'};
 };
 
-// export const postMovieAndBookmark = ()
+export const postBookmark = (movie) => {
+  postMovie(movie)
+  server.post("/api/v1/bookmarks", { tmdb_id: `${movie.tmdb_id}` });
+
+  return {type: 'toto'};
+}
+// export const postMovieAndBookmark = async (movie) => {
+//  movie postMovie(movie);
+// }
+// }

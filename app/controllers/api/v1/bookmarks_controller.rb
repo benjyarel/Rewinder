@@ -11,7 +11,9 @@ class Api::V1::BookmarksController < Api::V1::BaseController
   end
 
   def create
-    @bookmark = Bookmark.new(bookmark_params)
+    movie = Movie.find_by(tmdb_id: params[:tmdb_id])
+    @bookmark = Bookmark.new(user: current_user, movie: movie)
+    #TO DO : s'assurer que le bookmark n'existe pas déja ( model bookmark , uniqueness true , movie scope)
     render_error unless @bookmark.save
     render json: @bookmark
   end

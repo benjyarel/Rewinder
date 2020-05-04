@@ -8,8 +8,12 @@ class Api::V1::MoviesController < Api::V1::BaseController
 
   def create
     @movie = Movie.new(movie_params)
-    render_error unless @movie.save
-    render json: @movie
+    if @movie.save
+      render json: @movie
+    else
+      @movie_already_posted = Movie.find_by(tmdb_id: @movie.tmdb_id)
+      render json: @movie_already_posted
+    end
   end
 
   def search_movies
