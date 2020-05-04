@@ -1,19 +1,18 @@
 import React from "react";
-import { connect } from 'react-redux';
-import { postBookmark, postMovie } from '../actions';
+import { Link } from 'react-router-dom';
+import { postBookmark } from '../apis/server';
 
 class SearchMovieShow extends React.Component {
   componentDidMount() {
-    if (!this.props.location.state.movie) {
-      // TODO : push to la search;
+    if (!this.props.location.state) {
+      this.props.history.push("/search")
     }
   }
 
   handleClick = () => {
     const { movie } = this.props.location.state;
-    this.props.postBookmark(movie);
-  //  this.props.postMovie(movie)
-
+    postBookmark(movie)
+    this.props.history.push("/")
   }
 
   renderImgSrc(movie) {
@@ -25,7 +24,8 @@ class SearchMovieShow extends React.Component {
   renderActions() {
     return(
       <>
-        <button onClick={this.handleClick} className='btn btn-primary'>Add to Wishlist</button>
+        <button onClick={this.handleClick} className='btn btn-warning'>Add to Wishlist</button>
+        <Link to="/search" className="btn btn-warning">Return to Search</Link>
       </>
     );
   }
@@ -33,18 +33,21 @@ class SearchMovieShow extends React.Component {
 
 
   render(){
+    if (!this.props.location.state) {
+      return null;
+    }
     const { movie } = this.props.location.state;
     return(
       <div className="movie-show">
-        <div className="actions">
-          {this.renderActions()}
-        </div>
         <img src={this.renderImgSrc(movie)} alt='poster' />
         <div>{movie.title}</div>
         <p>{movie.synopsis}</p>
+        <div className="actions" style={{marginBottom: "80px"}}>
+          {this.renderActions()}
+        </div>
       </div>
     )
   }
 }
 
-export default connect(null, { postMovie, postBookmark })(SearchMovieShow);
+export default SearchMovieShow;

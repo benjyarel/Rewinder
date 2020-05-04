@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from "../reducers"
+// import history from '../history';
 
 import Footer from './Footer';
 import DashboardScreen from './screens/DashboardScreen';
@@ -19,7 +20,7 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={createStore(reducers, composeEnhancers(applyMiddleware(thunk)))} >
-        <HashRouter >
+        <HashRouter>
           <Switch>
             <Route path="/" exact component={DashboardScreen} />
             <Route path="/bookmarks" exact component={BookmarksScreen} />
