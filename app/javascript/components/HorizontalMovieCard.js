@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 import './HorizontalMovieCard.scss'
 
 class HorizontalMovieCard extends React.Component  {
@@ -25,9 +26,12 @@ class HorizontalMovieCard extends React.Component  {
     if (!movie) {
       return <div>Loading...</div>;
     };
+
+    const url = (!rating) ? `/bookmarks/${this.props.id}` : `/movie_reviews/${this.props.id}`
+
     return (
-        <div className='movie-card'>
-        <img src={this.renderImgSrc(movie)} alt='poster' />
+        <Link to={url} className='movie-card'>
+          <img src={this.renderImgSrc(movie)} alt='poster' />
           <div className="content">
             <div className="content-top">
               {this.truncateTitle(movie.title)}
@@ -36,7 +40,7 @@ class HorizontalMovieCard extends React.Component  {
               {this.renderBottomContent(movie,rating)}
             </div>
           </div>
-        </div>
+        </Link>
     );
 
   }

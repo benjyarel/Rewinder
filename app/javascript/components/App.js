@@ -4,13 +4,14 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from "../reducers"
-// import history from '../history';
 
 import Footer from './Footer';
 import DashboardScreen from './screens/DashboardScreen';
 import BookmarksScreen from './screens/BookmarksScreen';
 import SearchModal from './screens/SearchModal';
 import MovieReviewsScreen from './screens/MovieReviewsScreen';
+import BookmarksShow from './bookmarks/BookmarkShow';
+import MovieReviewShow from './movieReviews/MovieReviewShow';
 
 import "./App.scss";
 import SearchMovieShow from './SearchMovieShow';
@@ -24,9 +25,11 @@ class App extends React.Component {
           <Switch>
             <Route path="/" exact component={DashboardScreen} />
             <Route path="/bookmarks" exact component={BookmarksScreen} />
+            <Route path="/bookmarks/:id" exact component={BookmarksShow} />
             <Route path="/search" exact component={SearchModal} />
             <Route path='/search/show' component={SearchMovieShow} />
-            <Route path="/movie_reviews" component={MovieReviewsScreen} />
+            <Route path="/movie_reviews" exact component={MovieReviewsScreen} />
+            <Route path="/movie_reviews/:id" exact component={MovieReviewShow} />
           </Switch>
           <Footer />
         </HashRouter>

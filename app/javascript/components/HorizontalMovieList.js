@@ -7,17 +7,17 @@ import './HorizontalMovieList.scss'
 
 class HorizontalMovieList extends React.Component {
   componentDidMount() {
-    this.props.elements === "bookmarks" ? this.props.fetchBookmarksAndMovies() : this.props.fetchMovieReviewsAndMovies()
+    this.props.model === "bookmarks" ? this.props.fetchBookmarksAndMovies() : this.props.fetchMovieReviewsAndMovies()
   }
 
   renderList() {
-    if (this.props.elements === "bookmarks") {
+    if (this.props.model === "bookmarks") {
       return this.props.bookmarks.map((bookmark) => {
-        return < HorizontalMovieCard movieId={bookmark.movie_id} key={bookmark.id} />
+        return < HorizontalMovieCard movieId={bookmark.movie_id} key={bookmark.id} id={bookmark.id} />
       });
     } else {
       return this.props.movieReviews.map((movieReview) => {
-        return < HorizontalMovieCard movieId={movieReview.movie_id} rating={movieReview.rating} key={movieReview.id} />
+        return < HorizontalMovieCard movieId={movieReview.movie_id} rating={movieReview.rating} key={movieReview.id} id={movieReview.id}  />
       });
     }
   }
