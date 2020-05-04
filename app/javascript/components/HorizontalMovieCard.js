@@ -11,21 +11,23 @@ class HorizontalMovieCard extends React.Component  {
   }
 
   renderBottomContent(movie,rate) {
-    if (!rate) {
-      return <span>{movie.year}</span>;
-    };
-      return  <span className='rating'>{rate} / 10</span>;
+    return (!rate) ? <span>{movie.year}</span> : <span className='rating'>{rate} / 10</span>;
     }
+
+  renderImgSrc(movie) {
+    const poster_url = `https://image.tmdb.org/t/p/w150_and_h225_bestv2/${movie.poster_path}`
+    const placeholder_image = "https://via.placeholder.com/160x225/140100/FFFFFF/?text=No+image"
+    return movie.poster_path ? poster_url : placeholder_image;
+  }
 
   render(){
     const {movie, rating} = this.props;
     if (!movie) {
-      return null;
+      return <div>Loading...</div>;
     };
-    const poster_url = `https://image.tmdb.org/t/p/w150_and_h225_bestv2/${movie.poster_path}`
     return (
         <div className='movie-card'>
-          <img src={poster_url} alt='poster' />
+        <img src={this.renderImgSrc(movie)} alt='poster' />
           <div className="content">
             <div className="content-top">
               {this.truncateTitle(movie.title)}

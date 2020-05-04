@@ -12,6 +12,7 @@ import SearchModal from './screens/SearchModal';
 import MovieReviewsScreen from './screens/MovieReviewsScreen';
 
 import "./App.scss";
+import SearchMovieShow from './SearchMovieShow';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 class App extends React.Component {
@@ -23,6 +24,7 @@ class App extends React.Component {
             <Route path="/" exact component={DashboardScreen} />
             <Route path="/bookmarks" exact component={BookmarksScreen} />
             <Route path="/search" exact component={SearchModal} />
+            <Route path='/search/show' component={SearchMovieShow} />
             <Route path="/movie_reviews" component={MovieReviewsScreen} />
           </Switch>
           <Footer />

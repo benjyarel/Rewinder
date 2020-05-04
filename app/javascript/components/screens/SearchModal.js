@@ -1,31 +1,33 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { searchMovies } from '../../actions'
+import { searchMovies, deleteSearchedMovies } from '../../actions'
 import './SearchModal';
-import GridMovieCard from '../GridMovieCard';
+import SearchMovieCard from '../SearchMovieCard';
 
 
 class SearchModal extends React.Component {
+
   handleClick = () => {
     const query = document.querySelector(".form-control").value;
     if (!query) {
       return null;
     };
     this.props.searchMovies(query);
-  }
-
-  renderResults() {
-    if (this.props.moviesResult[0] === undefined) {
-      return null;
-    }
     // rend la search transparente, puis la fait disparaitre
     const search = document.querySelector('.search-container')
     search.style.opacity = 0;
     setTimeout(() => { search.style.display = "none"; }, 500);
 
+  }
+
+  renderResults() {
+    if (this.props.moviesResult[0] === undefined) {
+      return <div>Pas de résultats à afficher</div>;
+    }
+
     return this.props.moviesResult.map((movie) => {
-      return <GridMovieCard movie={movie} key={movie.tmdb_id}/>;
-      })
+      return <SearchMovieCard movie={movie} key={movie.tmdb_id}/>;
+    })
   }
 
   render() {
@@ -48,9 +50,14 @@ class SearchModal extends React.Component {
       </div>
     );
   }
+
+  componentWillUnmount() {
+    this.props.deleteSearchedMovies();
+  }
 };
+
 const mapStateToProps = (state) => {
   return {moviesResult: state.searchMovies}
 }
 
-export default connect(mapStateToProps, { searchMovies })(SearchModal);
+export default connect(mapStateToProps, { searchMovies, deleteSearchedMovies })(SearchModal);
