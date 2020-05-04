@@ -13,11 +13,11 @@ class Api::V1::MoviesController < Api::V1::BaseController
   end
 
   def search_movies
-    query = params[:query]
+    query = URI.escape(params[:query])
     url ="https://api.themoviedb.org/3/search/movie?api_key=#{ENV['TMDB_API']}&language=fr-FR&query=#{query}"
     response = JSON.parse(open(url).read)["results"]
     movies = response.map do |movie|
-      year =  movie["release_date"].empty? ? 0 : Date.parse(movie["release_date"]).year
+      year = movie["release_date"] == nil || movie["release_date"].empty?   ? 0 : Date.parse(movie["release_date"]).year
       movie =  Movie.new(
           title: movie["original_title"],
           year:  year,
@@ -32,7 +32,7 @@ class Api::V1::MoviesController < Api::V1::BaseController
   private
 
   def movie_params
-    params.require(:movie).permit(:title, :year, :director, :synopsis, :poster_path)
+    params.require(:movie).permit(:title, :year, :director, :synopsis, :poster_path, :tmdb_id)
   end
 
   def render_error

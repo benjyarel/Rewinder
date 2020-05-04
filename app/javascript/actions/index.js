@@ -46,5 +46,5 @@ export const searchMovies = (query) => {
 }
 
 export const deleteSearchedMovies = () => {
-  return { type: "DELETE_SEARCHED_MOVIES"}
+  return { type: "DELETE_SEARCHED_MOVIES" }
 }

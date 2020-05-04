@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { searchMovies, deleteSearchedMovies } from '../../actions'
 import './SearchModal';
-import GridMovieCard from '../GridMovieCard';
+import SearchMovieCard from '../SearchMovieCard';
 
 
 class SearchModal extends React.Component {
@@ -22,11 +22,12 @@ class SearchModal extends React.Component {
 
   renderResults() {
     if (this.props.moviesResult[0] === undefined) {
-      return null;
+      return <div>Pas de résultats à afficher</div>;
     }
+
     return this.props.moviesResult.map((movie) => {
-      return <GridMovieCard movie={movie} key={movie.tmdb_id}/>;
-      })
+      return <SearchMovieCard movie={movie} key={movie.tmdb_id}/>;
+    })
   }
 
   render() {
