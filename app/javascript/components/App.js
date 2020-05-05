@@ -6,15 +6,15 @@ import thunk from 'redux-thunk';
 import reducers from "../reducers"
 
 import Footer from './Footer';
-import DashboardScreen from './screens/DashboardScreen';
-import BookmarksScreen from './screens/BookmarksScreen';
-import SearchModal from './screens/SearchModal';
-import MovieReviewsScreen from './screens/MovieReviewsScreen';
+import DashboardScreen from './dashboard/DashboardScreen';
+import SearchScreen from './search/SearchScreen';
+import SearchMovieShow from './search/SearchMovieShow';
+import BookmarksIndex from './bookmarks/BookmarksIndex';
 import BookmarksShow from './bookmarks/BookmarkShow';
+import MovieReviewsIndex from './movieReviews/MovieReviewsIndex';
 import MovieReviewShow from './movieReviews/MovieReviewShow';
 
 import "./App.scss";
-import SearchMovieShow from './SearchMovieShow';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 class App extends React.Component {
@@ -24,11 +24,11 @@ class App extends React.Component {
         <HashRouter>
           <Switch>
             <Route path="/" exact component={DashboardScreen} />
-            <Route path="/bookmarks" exact component={BookmarksScreen} />
-            <Route path="/bookmarks/:id" exact component={BookmarksShow} />
-            <Route path="/search" exact component={SearchModal} />
+            <Route path="/search" exact component={SearchScreen} />
             <Route path='/search/show' component={SearchMovieShow} />
-            <Route path="/movie_reviews" exact component={MovieReviewsScreen} />
+            <Route path="/bookmarks" exact component={BookmarksIndex} />
+            <Route path="/bookmarks/:id" exact component={BookmarksShow} />
+            <Route path="/movie_reviews" exact component={MovieReviewsIndex} />
             <Route path="/movie_reviews/:id" exact component={MovieReviewShow} />
           </Switch>
           <Footer />

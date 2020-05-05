@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { searchMovies, deleteSearchedMovies } from '../../actions'
-import './SearchModal';
-import SearchMovieCard from '../SearchMovieCard';
+import './SearchScreen';
+import SearchMovieCard from './SearchMovieCard';
 
 
-class SearchModal extends React.Component {
+class SearchScreen extends React.Component {
 
   handleClick = () => {
     const query = document.querySelector(".form-control").value;
@@ -60,4 +60,4 @@ const mapStateToProps = (state) => {
   return {moviesResult: state.searchMovies}
 }
 
-export default connect(mapStateToProps, { searchMovies, deleteSearchedMovies })(SearchModal);
+export default connect(mapStateToProps, { searchMovies, deleteSearchedMovies })(SearchScreen);
