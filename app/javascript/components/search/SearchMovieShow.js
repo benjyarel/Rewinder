@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { renderImgSrc } from '../visualHelpers';
+
 import { postBookmarkToServer } from '../../apis/server';
 
 class SearchMovieShow extends React.Component {

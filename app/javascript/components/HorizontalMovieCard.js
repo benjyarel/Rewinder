@@ -1,17 +1,10 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import { renderImgSrc } from './visualHelpers';
+import { renderImgSrc, truncateString } from './visualHelpers';
 import './HorizontalMovieCard.scss'
 
 class HorizontalMovieCard extends React.Component  {
-  truncateTitle(title) {
-    if (!title) {
-      return null;
-    };
-    return title.length > 20 ? `${title.substring(17, 0)}...` : title
-  }
-
   renderBottomContent(movie,rate) {
     return (!rate) ? <span>{movie.year}</span> : <span className='rating'>{rate} / 10</span>;
     }
@@ -29,7 +22,7 @@ class HorizontalMovieCard extends React.Component  {
           <img src={renderImgSrc(movie,150,225)} alt='poster' />
           <div className="content">
             <div className="content-top">
-              {this.truncateTitle(movie.title)}
+            {truncateString(movie.title)}
             </div>
             <div className="content-bottom">
               {this.renderBottomContent(movie,rating)}
