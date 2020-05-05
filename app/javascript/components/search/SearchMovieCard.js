@@ -1,4 +1,5 @@
 import React from 'react';
+import { renderImgSrc } from '../visualHelpers';
 import { Link } from 'react-router-dom';
 
 class SearchMovieCard extends React.Component  {
@@ -9,17 +10,12 @@ class SearchMovieCard extends React.Component  {
     };
     return title.length > 20 ? `${title.substring(17, 0)}...` : title
   };
-  renderImgSrc(movie) {
-    const poster_url = `https://image.tmdb.org/t/p/w150_and_h225_bestv2/${movie.poster_path}`
-    const placeholder_image = "https://via.placeholder.com/160x225/140100/FFFFFF/?text=No+image"
-     return movie.poster_path ? poster_url : placeholder_image;
-  }
 
   render() {
     const { movie } = this.props
    return (
      <Link to={{pathname:"/search/show", state:{movie: movie }}} className='movie-card' >
-       <img src={this.renderImgSrc(movie)} alt='poster' />
+       <img src={renderImgSrc(movie, 150, 225)} alt='poster' />
        <div className="content">
          <div className="content-top">
            {this.truncateTitle(movie.title)}
