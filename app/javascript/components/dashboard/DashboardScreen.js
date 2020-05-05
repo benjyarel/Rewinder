@@ -7,8 +7,8 @@ class DashboardScreen extends React.Component {
   render() {
     return (
       <div>
-        <HorizontalMovieList title="Les films que vous voulez voir" elements="bookmarks" />
-        <HorizontalMovieList title="Vos dernières critiques" elements="movieReviews" />
+        <HorizontalMovieList title="Les films que vous voulez voir" model="bookmarks" />
+        <HorizontalMovieList title="Vos dernières critiques" model="movie_reviews" />
       </div>
     );
   }

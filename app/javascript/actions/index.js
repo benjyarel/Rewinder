@@ -48,14 +48,3 @@ export const searchMovies = (query) => {
 export const deleteSearchedMovies = () => {
   return { type: "DELETE_SEARCHED_MOVIES" }
 };
-
-export const postMovie = async (movie) => {
- const response = await server.post("/api/v1/movies", {movie: movie});
-  return {type: 'POST_MOVIE_DB', payload: response.data};
-};
-
-export const postBookmark = async (movie) => {
-  await postMovie(movie);
-  server.post("/api/v1/bookmarks", { tmdb_id: `${movie.tmdb_id}` })
-  return {type: "POST_BOOKMARK_TO_DB"};
-};
