@@ -14,14 +14,23 @@ class SearchMovieShow extends React.Component {
   handleClick = () => {
     const { movie } = this.props.location.state;
     postBookmarkToServer(movie);
-    this.props.history.push("/")
+    setTimeout(() => {
+      this.props.history.push("/")
+    }, 100);
   }
 
   renderActions() {
     return(
       <>
-        <button onClick={this.handleClick} className='btn btn-warning'>Add to Wishlist</button>
-        <Link to="/search" className="btn btn-warning">Return to Search</Link>
+        <button
+          onClick={this.handleClick}
+          className='rwnd-button'
+        >
+          Add to Wishlist
+        </button>
+        <Link to="/search" >
+          <button className='rwnd-button'>Return to Search</button>
+        </Link>
       </>
     );
   }
@@ -32,7 +41,7 @@ class SearchMovieShow extends React.Component {
     }
     const { movie } = this.props.location.state;
     return(
-      <div className="movie-show">
+      <div className="movie-show footer-container">
         <img src={renderImgSrc(movie, 300, 450)} alt='poster' />
         <div>{movie.title}</div>
         <p>{movie.synopsis}</p>

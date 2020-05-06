@@ -23,13 +23,13 @@ class App extends React.Component {
       <Provider store={createStore(reducers, composeEnhancers(applyMiddleware(thunk)))} >
         <HashRouter>
           <Switch>
-            <Route path="/" exact component={DashboardScreen} />
-            <Route path="/search" exact component={SearchScreen} />
-            <Route path='/search/show' component={SearchMovieShow} />
-            <Route path="/bookmarks" exact component={BookmarksIndex} />
-            <Route path="/bookmarks/:id" exact component={BookmarksShow} />
-            <Route path="/movie_reviews" exact component={MovieReviewsIndex} />
-            <Route path="/movie_reviews/:id" exact component={MovieReviewShow} />
+              <Route path="/" exact component={DashboardScreen} />
+              <Route path="/search" exact component={SearchScreen} />
+              <Route path='/search/show' component={SearchMovieShow} />
+              <Route path="/bookmarks" exact component={BookmarksIndex} />
+              <Route path="/bookmarks/:id" exact component={BookmarksShow} />
+              <Route path="/movie_reviews" exact component={MovieReviewsIndex} />
+              <Route path="/movie_reviews/:id" exact component={MovieReviewShow} />
           </Switch>
           <Footer />
         </HashRouter>

@@ -10,5 +10,5 @@ export const truncateString = (string) => {
     if (!string) {
       return null;
     };
-    return string.length > 40 ? `${string.substring(37, 0)}...` : string
+    return string.length > 40 ? `${string.substring(36, 0)}...` : string
   };
