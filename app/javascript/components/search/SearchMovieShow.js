@@ -16,7 +16,7 @@ class SearchMovieShow extends React.Component {
     postBookmarkToServer(movie);
     setTimeout(() => {
       this.props.history.push("/")
-    }, 200);
+    }, 100);
   }
 
   renderActions() {
@@ -41,7 +41,7 @@ class SearchMovieShow extends React.Component {
     }
     const { movie } = this.props.location.state;
     return(
-      <div className="movie-show">
+      <div className="movie-show footer-container">
         <img src={renderImgSrc(movie, 300, 450)} alt='poster' />
         <div>{movie.title}</div>
         <p>{movie.synopsis}</p>
