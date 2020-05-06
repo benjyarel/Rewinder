@@ -25,11 +25,11 @@ class SearchScreen extends React.Component {
     const searchBackground = document.querySelector('.search-container');
     if (!query) {
       return null;
-    };
-    this.props.searchMovies(query);
-    search.style.opacity = 0;
-    setTimeout(() => { searchBackground.style.display = "none"; }, 500);
-
+    } else {
+      this.props.searchMovies(query);
+      search.style.opacity = 0;
+      setTimeout(() => { searchBackground.style.display = "none"; }, 500);
+    }
   }
 
   renderResults() {
@@ -42,12 +42,10 @@ class SearchScreen extends React.Component {
     }
     return (
       <div className="results">
-        {
-          this.props.moviesResult.map((movie) => {
+        {this.props.moviesResult.map((movie) => {
             return <SearchMovieCard movie={movie} key={movie.tmdb_id} />;
-            }
-          )
-        }
+          }
+        )}
       </div>
     );
   }

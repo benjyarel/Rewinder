@@ -11,7 +11,7 @@ const SearchForm = (props) => {
           <div className="form-group">
             <label>Quel film voulez-vous chercher ?</label>
             <input type="movie" className="form-control" placeholder="Nom du film..." />
-            <button type="submit" className="rwnd-button" onClick={props.handleClick}>Cherche Lycos</button>
+            <button type="submit" className="rwnd-button" onClick={props.handleClick}>Cherchez</button>
           </div>
         </form>
       </div>
