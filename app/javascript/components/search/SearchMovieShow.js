@@ -14,14 +14,23 @@ class SearchMovieShow extends React.Component {
   handleClick = () => {
     const { movie } = this.props.location.state;
     postBookmarkToServer(movie);
-    this.props.history.push("/")
+    setTimeout(() => {
+      this.props.history.push("/")
+    }, 200);
   }
 
   renderActions() {
     return(
       <>
-        <button onClick={this.handleClick} className='btn btn-warning'>Add to Wishlist</button>
-        <Link to="/search" className="btn btn-warning">Return to Search</Link>
+        <button
+          onClick={this.handleClick}
+          className='rwnd-button'
+        >
+          Add to Wishlist
+        </button>
+        <Link to="/search" >
+          <button className='rwnd-button'>Return to Search</button>
+        </Link>
       </>
     );
   }
