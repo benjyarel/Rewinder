@@ -1,5 +1,6 @@
 class Api::V1::MovieReviewsController < Api::V1::BaseController
   before_action :set_movie_review, only: [:show, :update]
+
   def index
     @movie_reviews = current_user.movie_reviews.order(created_at: :desc)
     render json: @movie_reviews

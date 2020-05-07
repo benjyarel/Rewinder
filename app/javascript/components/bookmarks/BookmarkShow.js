@@ -1,6 +1,5 @@
 import React from "react";
-import './BookmarkShow';
-import MovieShow from "../MovieShow"
+import MovieShowHeader from "../MovieShowHeader"
 import { connect } from "react-redux";
 import { fetchBookmarkAndMovie } from '../../actions';
 
@@ -13,9 +12,8 @@ class BookmarkShow extends React.Component {
     if (!this.props.movie) {
       return <div>Loading...</div>;
     }
-    const { movie } = this.props;
     return (
-        <MovieShow movie={movie} />
+        <MovieShowHeader movie={this.props.movie} />
     );
   }
 };
