@@ -1,10 +1,7 @@
 import React from "react";
+import HorizontalMovieList from './HorizontalMovieList';
 
-import HorizontalMovieList from '../HorizontalMovieList';
-
-class DashboardScreen extends React.Component {
-
-  render() {
+const DashboardScreen = () => {
     return (
       <div className="footer-container">
         <h1 className="main-title">Rewinder</h1>
@@ -12,7 +9,6 @@ class DashboardScreen extends React.Component {
         <HorizontalMovieList title="Vos dernières critiques" model="movie_reviews" />
       </div>
     );
-  }
-}
+};
 
 export default DashboardScreen ;

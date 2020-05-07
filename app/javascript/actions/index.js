@@ -7,6 +7,14 @@ export const fetchBookmarks =  () => {
     dispatch({type: 'FETCH_BOOKMARKS', payload: response.data});
   };
 };
+export const fetchBookmark = (id) => {
+  return async (dispatch) => {
+    const response = await server.get(`/api/v1/bookmarks/${id}`);
+    dispatch({ type: 'FETCH_BOOKMARK', payload: response.data });
+    // for fetch bookmark and movie
+    return response.data.movie_id;
+  };
+};
 
 export const fetchMovieReviews = () => {
   return async (dispatch) => {
@@ -30,6 +38,14 @@ export const fetchBookmarksAndMovies = () => {
   };
 };
 
+export const fetchBookmarkAndMovie = (bookmarkId) => {
+  console.log(bookmarkId);
+  return async (dispatch) => {
+    const response = await dispatch(fetchBookmark(bookmarkId));
+     dispatch(fetchMovie(response));
+  };
+};
+
 export const fetchMovieReviewsAndMovies = () => {
   return async (dispatch, getState) => {
     await dispatch(fetchMovieReviews());
@@ -48,3 +64,5 @@ export const searchMovies = (query) => {
 export const deleteSearchedMovies = () => {
   return { type: "DELETE_SEARCHED_MOVIES" }
 };
+
+
