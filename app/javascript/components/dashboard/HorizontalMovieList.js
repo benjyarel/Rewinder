@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
-
-import HorizontalMovieCard from './HorizontalMovieCard';
-import { fetchMovieReviewsAndMovies, fetchBookmarksAndMovies } from '../actions';
+import { fetchMovieReviewsAndMovies, fetchBookmarksAndMovies } from '../../actions';
+import HorizontalMovieCard from '../HorizontalMovieCard';
 import './HorizontalMovieList.scss'
 
 class HorizontalMovieList extends React.Component {
