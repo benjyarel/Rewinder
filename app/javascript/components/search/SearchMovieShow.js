@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import { renderImgSrc } from '../visualHelpers';
-
+import MovieShow from '../MovieShow' ;
 import { postBookmarkToServer } from '../../apis/server';
 
 class SearchMovieShow extends React.Component {
@@ -41,14 +40,12 @@ class SearchMovieShow extends React.Component {
     }
     const { movie } = this.props.location.state;
     return(
-      <div className="movie-show footer-container">
-        <img src={renderImgSrc(movie, 300, 450)} alt='poster' />
-        <div>{movie.title}</div>
-        <p>{movie.synopsis}</p>
-        <div className="actions" style={{marginBottom: "80px"}}>
+      <>
+        <MovieShow movie={movie} />
+        <div className="actions" style={{ marginBottom: "80px" }}>
           {this.renderActions()}
         </div>
-      </div>
+      </>
     )
   }
 }

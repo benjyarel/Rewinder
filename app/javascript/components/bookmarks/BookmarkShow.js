@@ -1,50 +1,35 @@
 import React from "react";
-import { renderImgSrc } from '../visualHelpers'
 import './BookmarkShow';
+import MovieShow from "../MovieShow"
+import { connect } from "react-redux";
+import { fetchBookmarkAndMovie } from '../../actions';
 
 class BookmarkShow extends React.Component {
+  componentDidMount() {
+    this.props.fetchBookmarkAndMovie(this.props.match.params.id);
+  }
+
   render() {
-     const movie =  {
-       title: 'La Haine',
-       year: '1995',
-       director: 'Mathieu Kassovitz',
-       poster_path: '3nVoVV0RmweOgDjebtI8CFv13rf.jpg',
-       synopsis: "Trois copains d'une banlieue ordinaire traînent leur ennui et leur jeunesse qui se perd. Ils vont vivre la journée la plus importante de leur vie après une nuit d'émeutes provoquée par le passage à tabac d'Abdel Ichah par un inspecteur de police lors d'un interrogatoire.",
-       tmdb_id: 24
-     }
+    if (!this.props.movie) {
+      return <div>Loading...</div>;
+    }
+    const { movie } = this.props;
     return (
-      <div>
-        <div className="movie-show">
-
-          <img src={renderImgSrc(movie, 300, 450)} alt=""/>
-
-          <div className="movie-show-block">
-            <h3 className="movie-show-block-header">{movie.title}</h3>
-            <div className="movie-show-block-content">
-                <div className="info-line">
-                  <span className='info-line-title'>Director :</span>
-                  <span className='info-line-content'>{movie.director}</span>
-                </div>
-                <div className="info-line">
-                  <span className='info-line-title'>Year :</span><span className='info-line-content'>{movie.year}</span>
-                </div>
-            </div>
-          </div>
-
-          <div className="movie-show-block">
-            <h3 className="movie-show-block-header">Synopsis</h3>
-            <div className="movie-show-block-content">
-              <div className="paragraph-block">
-                {movie.synopsis}
-              </div>
-            </div>
-          </div>
-
-
-        </div>
-      </div>
+        <MovieShow movie={movie} />
     );
   }
 };
 
-export default BookmarkShow;
+const mapStateToProps = (state, ownProps) => {
+  const { id } = ownProps.match.params;
+  const bookmark = state.bookmarks.find(b => b.id === parseInt(id, 10))
+  if (bookmark) {
+    // if pour opérer en deux temps : 1° enregistrer dans redux le bookmark , 2° renvoyer encore ce bookmark, mais aussi le film
+    return {
+      bookmark: bookmark,
+      movie: state.movies.find(m => m.id === bookmark.movie_id)
+    }
+  }
+  return { bookmark: bookmark }
+}
+export default connect(mapStateToProps, { fetchBookmarkAndMovie })(BookmarkShow);
