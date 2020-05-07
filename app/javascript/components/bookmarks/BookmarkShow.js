@@ -1,11 +1,9 @@
 import React from "react";
 import { renderImgSrc } from '../visualHelpers'
+import './BookmarkShow';
 
 class BookmarkShow extends React.Component {
-
-
   render() {
-
      const movie =  {
        title: 'La Haine',
        year: '1995',
@@ -23,14 +21,13 @@ class BookmarkShow extends React.Component {
           <div className="movie-show-block">
             <h3 className="movie-show-block-header">{movie.title}</h3>
             <div className="movie-show-block-content">
-              <div className="info-lines">
                 <div className="info-line">
-                  <span className='line-title'>director :</span><span className='line-content'>{movie.director}</span>
+                  <span className='info-line-title'>Director :</span>
+                  <span className='info-line-content'>{movie.director}</span>
                 </div>
                 <div className="info-line">
-                  <span className='line-title'>Year :</span><span className='line-content'>{movie.year}</span>
+                  <span className='info-line-title'>Year :</span><span className='info-line-content'>{movie.year}</span>
                 </div>
-              </div>
             </div>
           </div>
 
