@@ -15,7 +15,7 @@ class HorizontalMovieCard extends React.Component  {
       return <div>Loading...</div>;
     };
 
-    const url = (!rating) ? `/bookmarks/${id}` : `/movie_reviews/${id}`
+    const url = (this.props.model === "bookmarks") ? `/bookmarks/${id}` : `/movie_reviews/${id}`
 
     return (
         <Link to={url} className='movie-card'>

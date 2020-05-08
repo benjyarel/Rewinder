@@ -12,13 +12,28 @@ class HorizontalMovieList extends React.Component {
   renderList() {
     if (this.props.model === "bookmarks") {
       return this.props.bookmarks.map((bookmark) => {
-        return < HorizontalMovieCard movieId={bookmark.movie_id} key={bookmark.id} id={bookmark.id} />
+        return (
+          < HorizontalMovieCard
+            model={this.props.model}
+            movieId={bookmark.movie_id}
+            key={bookmark.id}
+            id={bookmark.id}
+          />
+        )
       });
     } else {
 
       return this.props.movieReviews.map((movieReview) => {
         const movieKey = `MovieReview-${movieReview.id}`
-        return < HorizontalMovieCard movieId={movieReview.movie_id} rating={movieReview.rating} key={movieKey} id={movieReview.id}  />
+        return (
+          < HorizontalMovieCard
+            model={this.props.model}
+            movieId={movieReview.movie_id}
+            rating={movieReview.rating}
+            key={movieKey}
+            id={movieReview.id}
+            />
+        )
       });
     }
   }

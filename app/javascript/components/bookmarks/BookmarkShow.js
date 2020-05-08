@@ -2,15 +2,17 @@ import React from "react";
 import MovieShowHeader from "../MovieShowHeader"
 import { connect } from "react-redux";
 import { fetchBookmarkAndMovie } from '../../actions';
+import { CreateMovieReviewToServer  } from '../../apis/server';
 
 class BookmarkShow extends React.Component {
   componentDidMount() {
     this.props.fetchBookmarkAndMovie(this.props.match.params.id);
   }
 
-  handleClick() {
+  handleClick = () => {
     // j'instancie un movie review new vide
     // je lui passe l'id du film
+    CreateMovieReviewToServer(this.props.movie.id)
     // je push sur la moviereview show de l'instance qui vient d'être crée
   }
 
