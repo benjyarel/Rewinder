@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import MovieShow from '../MovieShow' ;
+import MovieShowHeader from '../MovieShowHeader' ;
 import { postBookmarkToServer } from '../../apis/server';
 
 class SearchMovieShow extends React.Component {
@@ -10,12 +10,10 @@ class SearchMovieShow extends React.Component {
     }
   }
 
-  handleClick = () => {
+  handleClick = async () => {
     const { movie } = this.props.location.state;
-    postBookmarkToServer(movie);
-    setTimeout(() => {
-      this.props.history.push("/")
-    }, 100);
+    const response = await postBookmarkToServer(movie);
+    this.props.history.push(`/bookmarks/${response}`)
   }
 
   renderActions() {
@@ -41,7 +39,7 @@ class SearchMovieShow extends React.Component {
     const { movie } = this.props.location.state;
     return(
       <>
-        <MovieShow movie={movie} />
+        <MovieShowHeader movie={movie} />
         <div className="actions" style={{ marginBottom: "80px" }}>
           {this.renderActions()}
         </div>

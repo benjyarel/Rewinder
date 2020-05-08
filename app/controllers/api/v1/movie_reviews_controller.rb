@@ -1,5 +1,6 @@
 class Api::V1::MovieReviewsController < Api::V1::BaseController
   before_action :set_movie_review, only: [:show, :update]
+
   def index
     @movie_reviews = current_user.movie_reviews.order(created_at: :desc)
     render json: @movie_reviews
@@ -10,9 +11,13 @@ class Api::V1::MovieReviewsController < Api::V1::BaseController
   end
 
   def create
-    @movie_review = MovieReview.new(movie_review_params)
-    render_error unless @movie_review.save
-    render json: @movie_review
+    @movie_review = MovieReview.new(movie_id: params[:movie_id], user: current_user)
+    # S'ASSURER QUE UNE MOVIE REVIEW N EXISTE PAS DEJA DANS LE SCOPE DU CURRENT USER POUR CE FILM
+    if @movie_review.save
+      render json: @movie_review
+    else
+      render_error
+    end
   end
 
   def update

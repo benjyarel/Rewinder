@@ -1,7 +1,8 @@
 import React from 'react';
 import { renderImgSrc } from './visualHelpers';
+import "./MovieShowHeader";
 
-const MovieShow = (props) => {
+const MovieShowHeader = (props) => {
   const { movie } = props ;
   return (
     <div className="movie-show">
@@ -35,4 +36,4 @@ const MovieShow = (props) => {
   );
 };
 
-export default MovieShow;
+export default MovieShowHeader;

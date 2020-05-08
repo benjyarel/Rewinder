@@ -6,11 +6,17 @@ export const server = axios.create({
 
 export const postMovieToServer = async (movie) => {
   const response = await server.post("/api/v1/movies", { movie: movie });
-  return { type: 'POST_MOVIE_DB', payload: response.data };
+  return response.data.id;
 };
 
 export const postBookmarkToServer = async (movie) => {
-  await postMovieToServer(movie);
-  server.post("/api/v1/bookmarks", { tmdb_id: `${movie.tmdb_id}` })
-  return { type: "POST_BOOKMARK_DB" };
+  const response = await  postMovieToServer(movie);
+  const bookmark = await server.post("/api/v1/bookmarks", { movie_id: response })
+  return bookmark.data.id;
 };
+
+
+export const CreateMovieReviewToServer = async (movieId) => {
+  const response = await server.post("api/v1/movie_reviews",{movie_id: movieId});
+  return response.data.id;
+}
