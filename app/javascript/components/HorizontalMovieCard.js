@@ -14,21 +14,19 @@ class HorizontalMovieCard extends React.Component  {
     if (!movie) {
       return <div>Loading...</div>;
     };
-
     const url = (this.props.model === "bookmarks") ? `/bookmarks/${id}` : `/movie_reviews/${id}`
-
     return (
-        <Link to={url} className='movie-card'>
-          <img src={renderImgSrc(movie,150,225)} alt='poster' />
-          <div className="content">
-            <div className="content-top">
-            {truncateString(movie.title)}
-            </div>
-            <div className="content-bottom">
-              {this.renderBottomContent(movie,rating)}
-            </div>
+      <Link to={url} className='movie-card'>
+        <img src={renderImgSrc(movie,150,225)} alt='poster' />
+        <div className="content">
+          <div className="content-top">
+          {truncateString(movie.title)}
           </div>
-        </Link>
+          <div className="content-bottom">
+            {this.renderBottomContent(movie,rating)}
+          </div>
+        </div>
+      </Link>
     );
 
   }

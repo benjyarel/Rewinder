@@ -10,30 +10,29 @@ class HorizontalMovieList extends React.Component {
   }
 
   renderList() {
+    const { model } = this.props
     if (this.props.model === "bookmarks") {
       return this.props.bookmarks.map((bookmark) => {
         return (
           < HorizontalMovieCard
-            model={this.props.model}
+            model={model}
             movieId={bookmark.movie_id}
             key={bookmark.id}
             id={bookmark.id}
           />
-        )
+        );
       });
     } else {
-
       return this.props.movieReviews.map((movieReview) => {
-        const movieKey = `MovieReview-${movieReview.id}`
         return (
           < HorizontalMovieCard
-            model={this.props.model}
+            model={model}
             movieId={movieReview.movie_id}
             rating={movieReview.rating}
-            key={movieKey}
+            key={movieReview.id}
             id={movieReview.id}
             />
-        )
+        );
       });
     }
   }
