@@ -10,12 +10,10 @@ class SearchMovieShow extends React.Component {
     }
   }
 
-  handleClick = () => {
+  handleClick = async () => {
     const { movie } = this.props.location.state;
-    postBookmarkToServer(movie);
-    setTimeout(() => {
-      this.props.history.push("/")
-    }, 100);
+    const response = await postBookmarkToServer(movie);
+    this.props.history.push(`/bookmarks/${response}`)
   }
 
   renderActions() {

@@ -9,11 +9,9 @@ class BookmarkShow extends React.Component {
     this.props.fetchBookmarkAndMovie(this.props.match.params.id);
   }
 
-  handleClick = () => {
-    // j'instancie un movie review new vide
-    // je lui passe l'id du film
-    CreateMovieReviewToServer(this.props.movie.id)
-    // je push sur la moviereview show de l'instance qui vient d'être crée
+  handleClick = async () => {
+    const response = await CreateMovieReviewToServer(this.props.movie.id)
+    this.props.history.push(`/movie_reviews/${response}`);
   }
 
   renderActions() {
