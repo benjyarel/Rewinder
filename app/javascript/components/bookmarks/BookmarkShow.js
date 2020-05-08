@@ -8,12 +8,31 @@ class BookmarkShow extends React.Component {
     this.props.fetchBookmarkAndMovie(this.props.match.params.id);
   }
 
+  handleClick() {
+    // j'instancie un movie review new vide
+    // je lui passe l'id du film
+    // je push sur la moviereview show de l'instance qui vient d'être crée
+  }
+
+  renderActions() {
+    return (
+      <div className="actions">
+        <button onClick={this.handleClick} className='rwnd-button' >
+          Rate It / Write a Review
+        </button>
+      </div>
+    );
+  }
+
   render() {
     if (!this.props.movie) {
       return <div>Loading...</div>;
     }
     return (
+      <div className="bookmark-show footer-container">
         <MovieShowHeader movie={this.props.movie} />
+        {this.renderActions()}
+      </div>
     );
   }
 };

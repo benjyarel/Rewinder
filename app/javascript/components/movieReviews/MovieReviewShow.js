@@ -22,7 +22,8 @@ const mapStateToProps = (state, ownProps) => {
   const { id } = ownProps.match.params;
   const movieReview = state.movieReviews.find(b => b.id === parseInt(id, 10))
   if (movieReview) {
-    // if pour opérer en deux temps : 1° enregistrer dans redux le movieReview , 2° renvoyer encore ce movieReview, mais aussi le film
+    // if pour opérer en deux temps : 1° enregistrer dans redux le movieReview ,
+    // 2° mapper encore ce movieReview, mais aussi le film
     return {
       movieReview: movieReview,
       movie: state.movies.find(m => m.id === movieReview.movie_id)
