@@ -7,11 +7,11 @@ const SearchForm = (props) => {
   return ReactDOM.createPortal(
     <div className="search-container">
       <div className="search-movie-box">
-        <form className="search-movie-form">
+        <form className="search-movie-form" onSubmit={() => props.handleClick()}>
           <div className="form-group">
             <label>Quel film voulez-vous chercher ?</label>
             <input type="movie" className="form-control" placeholder="Nom du film..." />
-            <button type="submit" className="rwnd-button" onClick={props.handleClick}>Cherchez</button>
+            <button type="submit" className="rwnd-button">Cherchez</button>
           </div>
         </form>
       </div>

@@ -23,17 +23,13 @@ class SearchScreen extends React.Component {
     const query = document.querySelector(".form-control").value;
     const search = document.querySelector('.search-movie-box');
     const searchBackground = document.querySelector('.search-container');
-    if (!query) {
-      return null;
-    } else {
       this.props.searchMovies(query);
       search.style.opacity = 0;
       setTimeout(() => { searchBackground.style.display = "none"; }, 500);
-    }
   }
 
   renderResults() {
-    if (this.props.moviesResult[0] === undefined) {
+    if (this.props.moviesResult === null || undefined) {
       return (
         <div className='no-results'>
           <p>Pas de résultats à afficher</p>
@@ -53,7 +49,7 @@ class SearchScreen extends React.Component {
   render() {
     return (
       <div>
-        <SearchForm  handleClick={this.handleClick}/>
+        <SearchForm handleClick={this.handleClick}/>
         {this.renderResults()}
       </div>
     );
